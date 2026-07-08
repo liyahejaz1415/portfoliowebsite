@@ -38,6 +38,7 @@
             <a href="#about" class="block py-2 text-slate-600 hover:text-indigo-600">About</a>
             <a href="#skills" class="block py-2 text-slate-600 hover:text-indigo-600">Skills</a>
             <a href="#services" class="block py-2 text-slate-600 hover:text-indigo-600">Services</a>
+            <a href="#projects">Projects</a> <a href="#resume">Resume</a>     <a href="#contact">Contact</a>   ```
         </div>
     </nav>
 
@@ -277,5 +278,78 @@
             </div>
         </div>
     </section>
+    <section id="contact" class="contact reveal">
+        <div class="section-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <h3>Let's talk about your project</h3>
+                    <p>I'm open to discussing frontend engineering roles, user interface collaborations, or data architecture opportunities.</p>
+                    
+                    <div class="info-links">
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>your.email@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Karachi, Sindh, Pakistan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! (Mock Action)');">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Tell me about your project needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit-btn">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Send Message
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="final-footer">
+        <div class="footer-container">
+            <div class="footer-logo">PORTFOLIO.</div>
+            
+            <div class="footer-socials">
+                <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            
+            <p class="footer-copy">&copy; 2026 Portfolio. All rights reserved | Milestone 3 Assignment Completion.</p>
+        </div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll); // Trigger on fresh load
+    </script>
 </body>
 </html>
