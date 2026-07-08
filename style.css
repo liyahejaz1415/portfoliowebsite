@@ -1,0 +1,328 @@
+/* --- 1. DESIGN STYLING TOKENS --- */
+:root {
+    --primary-color: #4f46e5;       /* Modern Indigo Accent */
+    --primary-hover: #4338ca;       /* Darker Indigo for interactive buttons */
+    --bg-light: #f8fafc;            /* Subtle light gray layout background */
+    --bg-white: #ffffff;
+    --text-dark: #0f172a;           /* Crisp off-black text */
+    --text-muted: #475569;          /* Readable gray secondary text */
+    --border-color: #e2e8f0;        /* Soft borders separating structural blocks */
+    --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- 2. GLOBAL RESET CONFIGURATIONS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding does not break layout width calculations */
+}
+
+html {
+    scroll-behavior: smooth; /* Gives a smooth panning animation when navigation items are clicked */
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- 3. CORE NAVIGATION BAR LAYOUT --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px); /* Gives a premium frosted glass blur effect */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.nav-logo {
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--primary-color);
+    letter-spacing: -0.03em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hide Mobile Menu Buttons by default on desktops */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none; /* Controlled dynamically by JS and Responsive Media Queries */
+}
+
+/* Temporary Section Box styling to test scrolling setup */
+section {
+    min-height: 60vh;
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+/* --- 4. RESPONSIVE DESIGN CONTROLS --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide standard structural navigation row on mobile */
+    }
+    
+    .menu-toggle {
+        display: block; /* Show hamburger toggle button */
+    }
+    
+    .mobile-nav {
+        background-color: var(--bg-white);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 1.5rem;
+    }
+    
+    .mobile-nav.hidden {
+        display: none; /* Keeps menu hidden until toggle interaction triggers */
+    }
+    
+    .mobile-nav:not(.hidden) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .mobile-nav a {
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+}
+/* --- DAY 2 EXTENDED LAYOUT STYLES --- */
+
+/* Project Layout Grids */
+.projects {
+    background-color: var(--bg-light);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--bg-white);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+}
+
+.project-img {
+    height: 10rem;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.project-content p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: var(--bg-light);
+    color: #4338ca;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.25rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Resume & Timelines */
+.resume {
+    background-color: var(--bg-white);
+}
+
+.download-container {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+.timeline-heading {
+    font-size: 1.35rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.timeline-heading i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: #e0e7ff;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.15rem;
+}
+
+.timeline-item h5 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.timeline-item p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+/* Testimonials */
+.testimonials {
+    background-color: var(--bg-light);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background-color: var(--bg-white);
+    padding: 2.5rem 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.testimonial-user strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.testimonial-user span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES FOR DAY 2 --- */
+@media (min-width: 640px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .timeline-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
